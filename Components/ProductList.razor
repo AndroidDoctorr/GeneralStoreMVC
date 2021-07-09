@@ -1,0 +1,45 @@
+@using Microsoft.AspNetCore.Components
+@using GS_MVC.Models
+@inherits ComponentBase
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Products)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.QuantityInStock
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    <a href="Courses/Edit/@item.ProductId">Edit</a> |
+                    <a href="Courses/Details/@item.ProductId">Details</a> |
+                    <a href="Courses/Delete/@item.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter] public IEnumerable<ProductListItem> Products { get; set; }
+}
